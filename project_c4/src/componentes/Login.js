@@ -63,6 +63,12 @@ const Login = () => {
         }
       })
     }else{
+
+      const jwt = response.token;
+
+      localStorage.setItem('token', jwt);
+
+
       //redireccionar a la pantalla de administrador
       navigate("/admin");
       }
