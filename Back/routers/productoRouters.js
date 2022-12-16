@@ -7,8 +7,8 @@ router.get("/",authMiddleware, productoController.leerProducto);
 
 router.post("/",authMiddleware, productoController.crearProducto);
 
-router.put("/:id",authMiddleware, productoController.actualizarProducto);
+router.put("/",authMiddleware, productoController.actualizarProducto);
 
-router.delete("/:id",authMiddleware, productoController.borrarProducto);
+router.delete("/",authMiddleware, productoController.borrarProducto);
 
 module.exports = router;
