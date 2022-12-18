@@ -7,6 +7,14 @@
   pointer-events: none;
 }
 
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  width: 100%;
+  align-items: center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -35,4 +43,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.card-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-login h1 {
+  text-align: center;
 }

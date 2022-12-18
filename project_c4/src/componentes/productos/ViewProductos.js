@@ -1,8 +1,34 @@
 import React from 'react'
+import { Link, useParams } from 'react-router-dom';
+import swal from 'sweetalert';
+import crud from '../../conexiones/crud';
+export const ViewProductos = ({producto, cargarProductos }) => {
+    const {nombre, descripcion, stock, precio, imagen, _id } = producto;
 
-export const ViewProductos = ({producto}) => {
+    const borrarProducto = async (idProducto) =>{
+        swal({
+          title: "Estas seguro de eliminar el producto",
+          text: "Una vez eliminado, no se podrá recuperar este producto",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            const response = crud.DELETE(`/api/producto/${idProducto}`);
+            const mensaje = response.msg;
+            if(response){
+              swal("Tu producto ha sido borrado correctamente", {
+                icon: "success",
+              });
+            }
+            cargarProductos();
+          } else {
+            swal("Se canceló la acción");
+          }
+        });
+        }
 
-    const {nombre, descripcion, stock, precio,imagen} = producto;
     return(
         <div
             className='border-r p-5 flex justify-between items-center'
@@ -16,14 +42,25 @@ export const ViewProductos = ({producto}) => {
             </div>
 
             <div className='flex flex-col lg:flex-row gap-2'>
-            <button
+            
+            <Link 
+            to={`/actualizar-producto/${_id}`}
+            className="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
+            >Editar</Link>
+
+            <button 
+            onClick={() => borrarProducto(_id)}
+            className="bg-red-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
+            >Eliminar</button>
+
+            {/* <button
                           className="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
                           //onClick={() => handleModalEditarTarea(tarea)}
                       >Editar</button>
                 <button
                           className="bg-red-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
                          // onClick={() => handleModalEliminarTarea(tarea)}
-                      >Eliminar</button>
+                      >Eliminar</button> */}
             </div>
         
         </div>

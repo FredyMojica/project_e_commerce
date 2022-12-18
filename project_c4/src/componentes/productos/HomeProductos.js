@@ -26,7 +26,7 @@ const HomeProductos = () => {
   const [productos, setProductos] = useState([]);
   
     const cargarProductos = async () => {
-      const response = await crud.GET(`/api/producto/${idCategoria}`);
+      const response = await crud.GET(`/api/producto/productos-por-categoria/${idCategoria}`);
       //console.log(response);
       setProductos(response);
     }
@@ -61,6 +61,7 @@ const HomeProductos = () => {
           <ViewProductos
             key={producto._id}
             producto={producto}
+            cargarProductos={cargarProductos}
           />
         )}
       </div>

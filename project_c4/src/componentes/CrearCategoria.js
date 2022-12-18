@@ -42,12 +42,12 @@ const CrearCategoria = () => {
   return (
     <>
       <Header/>
-      <div className='md:flex md:min-h-screen'>
+      <div className='md:flex md:min-h-screen bg-cyan-100'>
         <Sidebar/>
         <main className='flex-1'>
         <div className='mt-10 flex justify-center'>
-        <h1 className="inline bg-gradient-to-r from-indigo-200 via-violet-700 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
-              Crear Categoria
+        <h1 className="inline bg-gradient-to-r py-2 from-black via-gray-500 to-gray-800 bg-clip-text font-display text-5xl tracking-tight text-transparent">
+              Crear Categoría
             </h1>
         </div>
         

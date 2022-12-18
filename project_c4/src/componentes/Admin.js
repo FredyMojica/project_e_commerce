@@ -65,38 +65,40 @@ const Admin = () => {
   return (
     <>
     <Header/>
-    <div className='md:flex md:min-h-screen'>
+    <div className='md:flex md:min-h-screen  bg-blue-200'>
       <Sidebar/>
       <main className= 'flex-1'>
-   <h1 className="inline bg-gradient-to-r from-indigo-200 via-violet-700 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
-    Listado de categorias
+   <h1 className="inline bg-gradient-to-r from-black via-gray-500 to-gray-800 bg-clip-text font-display text-5xl tracking-tight text-transparent">
+    Listado de Categorías
     </h1>
     <table className="table table-bordered">
-        <thead className='bg-white'>
+        <thead className='bg-blue-200'>
             <tr>
-                <th style={{ width: '10%' }}>Imagen</th>
-                <th style={{ width: '75%' }}>Nombre</th>
-                <th style={{ width: '15%' }}>Opciones</th>
+                <th style={{ width: '15%' }}>Imagen</th>
+                <th style={{ width: '60%' }}>Nombre</th>
+                <th style={{ width: '20%' }}>Opciones</th>
             </tr>
         </thead>
                                        
-        <tbody className="bg-white">
+        <tbody className="bg-blue-200">
             {
                 categoria.map(
                     item =>
                         <tr key={item._id}>
                         <td><img src={item.imagen}></img></td>
-                        <td>{item.nombre}</td>
+                        <td align='center'>{item.nombre}</td>
                         <td>
                             <Link  
                               to={`/home-productos/${item._id}`}
-                            >crear producto</Link>&nbsp;&nbsp;
+                              className="bg-emerald-500 mb-5 mx-auto py-1 px-1 text-white font-bold rounded hover:cursor-pointer hover:bg-violet-400 transition-colors"
+                            >Crear Producto</Link>&nbsp;&nbsp;
                             <Link 
                             to={`/actualizar-categoria/${item._id}`}
-
+                            className="bg-sky-600 mb-5 mx-auto py-1 px-1 text-white font-bold rounded hover:cursor-pointer hover:bg-violet-400 transition-colors"
                             >Editar</Link>&nbsp;&nbsp;
                             <button  
                                 onClick={()=>borrarCategoria(item._id)}
+                                className="bg-red-600 mb-5 mx-auto py-1 px-1 text-white font-bold rounded hover:cursor-pointer hover:bg-violet-400 transition-colors"
                             >Eliminar</button>
                         </td>
                         </tr>

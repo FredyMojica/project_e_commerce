@@ -5,6 +5,8 @@ const productoController = require("../controllers/productoController");
 
 router.get("/home", productoController.leerProductoHome);
 
+router.get("/productos-por-categoria/:id",authMiddleware, productoController.leerProductos);
+
 router.get("/:id",authMiddleware, productoController.leerProducto);
 
 router.post("/",authMiddleware, productoController.crearProducto);
